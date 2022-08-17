@@ -12,6 +12,8 @@
     table {
       width: 500px;
       border-collapse: collapse;
+      /* Posição para fazer o cabeçalho poder grudar no top */
+      position: relative; 
     }
 
     td, th {
@@ -19,9 +21,30 @@
       padding: 10px;
     }
 
-    theade, tfoot {
-      background-color: gray;
+    caption {
+      font-size: 1.5em;
+      font-weight: bold;
+      padding: 10px;
+      background-color: lightgray;
+    }
+
+    thead, tfoot {
+      background-color: #383838;
       color: white;
+    }
+    /*Propriedade para grudar o cabeçalho na parte superior da tabela*/
+    thead > tr > th {
+      position: sticky;
+      top: -1px;
+      background-color: #383838;
+    }
+
+    tbody > tr:nth-child(even) { /*Psoudo classe para zebrado even = par*/
+      background-color: white;
+    }
+
+    tbody > tr:nth-child(odd) { /*Psoudo classe para zebrado odd = impar*/
+      background-color: lightgrey;
     }
 
     td.num{
@@ -35,6 +58,7 @@
   <!--
     ANATOMIA PARA TABLEAS GRANDES
     TABLE
+    CAPTION = LEGENDA
       THEAD = CABEÇA
         TR, TD, TH
       TBODY = CORPO
@@ -44,10 +68,11 @@
   -->
 
   <table>
+    <caption>População das Unidades Federativas</caption>
     <thead>
       <tr>
-        <th>Estado</th>
-        <th>População</th>
+        <th scope="col">Estado</th>
+        <th scope="col">População</th>
       </tr>
     </thead>
     <tbody>
@@ -189,7 +214,7 @@
     </tbody>
     <tfoot>
       <tr>
-        <td>Total de Habitantes</td>
+        <th scope="row">Total de Habitantes</th>
         <td class="num"><strong>210 147 125</strong></td>
       </tr>
     </tfoot>
